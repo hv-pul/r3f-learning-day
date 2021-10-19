@@ -1,12 +1,10 @@
 import {useEffect, useRef, useState} from "react";
 import { useSpring, animated, config } from '@react-spring/three'
-import { ThreeEvent } from "@react-three/fiber/dist/declarations/src/core/events";
 import { useA11y } from "@react-three/a11y";
 
 function Sphere(props: JSX.IntrinsicElements['mesh']) {
     const mesh = useRef<THREE.Mesh>(null!)
     const [hovered, setHover] = useState(false)
-    const [active, setActive] = useState(false)
 
     const a11y = useA11y()
 
@@ -15,7 +13,8 @@ function Sphere(props: JSX.IntrinsicElements['mesh']) {
     }, [a11y])
 
     const { scale } = useSpring({
-        scale: active ? 1.5 : 1,
+        // @ts-ignore
+        scale: props.active ? 1.5 : 1,
         config: config.wobbly
     })
 
@@ -29,7 +28,6 @@ function Sphere(props: JSX.IntrinsicElements['mesh']) {
             {...props}
             ref={mesh}
             scale={scale}
-            onClick={() => setActive(!active)}
         >
             <sphereBufferGeometry args={[1, 32, 32]} />
             <animated.meshStandardMaterial attach="material" color={color} roughness={0} metalness={0.1} />
