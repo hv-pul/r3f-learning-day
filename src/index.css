@@ -17,7 +17,3 @@ canvas {
     height: 100vh;
     background: rgb(255,254,250);
 }
-
-.is-hovered {
-    cursor: pointer;
-}

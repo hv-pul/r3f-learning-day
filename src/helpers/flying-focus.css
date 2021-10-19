@@ -1,0 +1,49 @@
+a:active {
+    outline: none;
+}
+
+*:focus {
+    outline: none;
+}
+
+#flying-focus {
+    position: absolute;
+    margin: 0;
+    top: -100px;
+    background: transparent;
+    transition-property: left, top, width, height, opacity;
+    transition-timing-function: cubic-bezier(0, 0.2, 0, 1);
+    visibility: hidden;
+    pointer-events: none;
+    display: none;
+}
+
+#flying-focus.flying-focus--visible {
+    visibility: visible;
+    z-index: 10000000;
+    display: block;
+}
+
+#flying-focus::after {
+    content: '';
+    position: absolute;
+    top: -9px;
+    left: -9px;
+    bottom: -9px;
+    right: -9px;
+    border-radius: 3px;
+    box-shadow: 0 0 54px 0 rgba(0,0,0,0.05), 0 0 2px 2px rgba(0,0,0,0.05);
+    border: 1px solid black;
+}
+
+#flying-focus::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    bottom: -8px;
+    right: -8px;
+    border-radius: 3px;
+    box-shadow: 0 0 2px rgba(255,255,255,.8) inset;
+    border: 1px solid rgba(255,255,255,.8);
+}
