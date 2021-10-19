@@ -1,26 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Canvas } from "@react-three/fiber";
+import { PerspectiveCamera } from "@react-three/drei"
+import Scene from "./components/Scene";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Canvas shadows dpr={ 2 }>
+            <PerspectiveCamera
+                makeDefault
+                fov={ 25 }
+                position={[0, 20, 20]}
+                rotation={[Math.PI / -4.5, 0, 0]}
+            >
+            </PerspectiveCamera>
+            <Scene />
+        </Canvas>
+    );
 }
 
 export default App;
