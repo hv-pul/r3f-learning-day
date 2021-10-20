@@ -2,7 +2,12 @@ import {useEffect, useRef, useState} from "react";
 import { useSpring, animated, config } from '@react-spring/three'
 import { useA11y } from "@react-three/a11y";
 
-function Sphere(props: JSX.IntrinsicElements['mesh']) {
+type MeshProps = JSX.IntrinsicElements['mesh'];
+interface SphereProps extends MeshProps {
+    active?: Boolean;
+}
+
+function Sphere(props: SphereProps) {
     const mesh = useRef<THREE.Mesh>(null!)
     const [hovered, setHover] = useState(false)
 
@@ -13,7 +18,6 @@ function Sphere(props: JSX.IntrinsicElements['mesh']) {
     }, [a11y])
 
     const { scale } = useSpring({
-        // @ts-ignore
         scale: props.active ? 1.5 : 1,
         config: config.wobbly
     })

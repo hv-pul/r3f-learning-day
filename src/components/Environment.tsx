@@ -12,7 +12,7 @@ function Environment(props: { children: any; }) {
 
     return (
         <>
-            <fog attach="fog" args={["rgba(255,254,250)", 28, 33.5]} />
+            <fog attach="fog" args={["rgba(250,249,245)", 28, 33.5]} />
             <ambientLight intensity={0.6} />
             <directionalLight
                 castShadow
@@ -39,7 +39,7 @@ function Environment(props: { children: any; }) {
             </Floor>
 
             <Floor rotation={ [ Math.PI / -2, 0, 0 ]} position={[0, -2, 0]}>
-                <meshStandardMaterial color="rgb(239,220,230)" />
+                <meshStandardMaterial color="rgb(230,225,230)" />
             </Floor>
         </>
     )
